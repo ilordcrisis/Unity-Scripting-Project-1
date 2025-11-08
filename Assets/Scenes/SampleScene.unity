@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   enemyOnePrefab: {fileID: 257210355215487136, guid: 3c07043107ef3294e8aff73236337e19, type: 3}
-  cloudPrefab: {fileID: 7264273951975138907, guid: 31c717deb92c5b049bf90c3b7ae526de, type: 3}
+  cloudPrefab: {fileID: 2806077533661487731, guid: 5c079f56e13bb9948af41f697704fe43, type: 3}
   livesText: {fileID: 1656741999}
   score: 0
   horizontalScreenSize: 9.5
@@ -858,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 6786422525053557231, guid: a91d32c07bd1eae43bdc08e9532aa663, type: 3}
       propertyPath: explosionPrefab
       value: 
-      objectReference: {fileID: 4014583838273221040, guid: 37727e50245b71d45bcf486fc8278a97, type: 3}
+      objectReference: {fileID: 2694213622271039420, guid: 37727e50245b71d45bcf486fc8278a97, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
