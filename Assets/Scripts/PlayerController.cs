@@ -73,18 +73,23 @@ public class PlayerController : MonoBehaviour
         }
 
         //finds the halfway point of the screen
-        float halfY = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2f, 0)).y;
+        float halfY = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2f, Camera.main.transform.position.z * -1)).y;
         //finds the bottom point of the screen
-        float bottomY = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+        float bottomY = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.transform.position.z * -1)).y;
 
-        //player can't move past the halfway point
+        // clamp position between bottom and halfway point
         Vector3 pos = transform.position;
-     
+
         if(pos.y > halfY)
         {
             pos.y = halfY;
         }
-
+     
+        if(pos.y < bottomY)
+        {
+            pos.y = bottomY;
+        }
+        //re-defines y position of player
         transform.position = pos;
     }
     
