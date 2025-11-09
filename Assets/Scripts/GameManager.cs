@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemyOnePrefab;
 
+    public GameObject enemyTwoPrefab;
+
+    public GameObject enemyThreePrefab;
+
     public TextMeshProUGUI livesText;
 
     public int score;
@@ -22,11 +26,26 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         InvokeRepeating("CreateEnemyOne", 1, 2);
+        InvokeRepeating("CreateEnemyTwo", 3, 3);
+        InvokeRepeating("CreateEnemyThree", 5, 4);
     }
 
     void CreateEnemyOne()
     {
+        Debug.Log("I am enemy one");
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
+    }
+
+    void CreateEnemyTwo()
+    {
+        Debug.Log("I am enemy two");
+        Instantiate(enemyTwoPrefab, new Vector3(Random.Range(-7f, 7f), 6.5f, 0), Quaternion.identity);
+    }
+
+    void CreateEnemyThree()
+    {
+        Debug.Log("I am enemy three");
+        Instantiate(enemyThreePrefab, new Vector3(Random.Range(-3f, 3f), 6.5f, 0), Quaternion.identity);
     }
 
     public void AddScore(int earnedScore)
