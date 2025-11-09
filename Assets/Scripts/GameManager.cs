@@ -18,11 +18,16 @@ public class GameManager : MonoBehaviour
     public float verticalScreenSize = 5f;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
         score = 0;
+        // InvokeRepeating(methodName, time before game starts spawning, spawn rate);
         InvokeRepeating("CreateEnemyOne", 1, 2);
     }
+
+
 
     void CreateEnemyOne()
     {
