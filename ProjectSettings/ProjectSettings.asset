@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: ec7bc79a7ea70b34ea9e700b1affff58
+  productGUID: 810c902853a835045a0343b06efbdcdf
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: scriptstuff
+  productName: My project (1)
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -70,7 +70,6 @@ PlayerSettings:
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
   androidUseSwappy: 0
-  androidDisplayOptions: 1
   androidBlitType: 0
   androidResizeableActivity: 1
   androidDefaultWindowWidth: 1920
@@ -844,16 +843,16 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: scriptstuff
-  metroPackageVersion: 1.0.0.0
+  metroPackageName: My project (1)
+  metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: scriptstuff
+  metroApplicationDescription: My project (1)
   wsaImages: {}
-  metroTileShortName: scriptstuff
+  metroTileShortName: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -922,11 +921,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: ea65b114-27dc-45d0-9dc5-721961eccc61
+  cloudProjectId: e74f486b-7893-45b7-9a33-c20915332777
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: scriptstuff
-  organizationId: ilordcrisis
+  projectName: My project (1)
+  organizationId: gr860432
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
