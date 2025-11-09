@@ -6,6 +6,13 @@ public class Enemy : MonoBehaviour
 {
 
     public GameObject explosionPrefab;
+
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -18,13 +25,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
-        if(whatDidIHit.tag == "Player")
+        if(whatDidIHit.gameObject.tag == "Player")
         {
             whatDidIHit.GetComponent<PlayerController>().LoseALife();
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
-        else if(whatDidIHit.tag == "Weapons")
+        else if(whatDidIHit.gameObject.tag == "Weapons")
         {
             Destroy(whatDidIHit.gameObject);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);

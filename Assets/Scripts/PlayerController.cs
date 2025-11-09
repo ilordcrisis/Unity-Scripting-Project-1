@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private float verticalInput;
 
+    private float halfY;
+
+    private float bottomY;
+
     private float horizontalScreenLimit = 9.5f;
 
     private float verticalScreenLimit = 6.5f;
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public void LoseALife()
     {
+        Debug.Log("Player hit! Lose a life.");
         lives--;
         gameManager.ChangeLivesText(lives);
         if (lives == 0)
@@ -57,19 +62,30 @@ public class PlayerController : MonoBehaviour
         //get player input
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
         //move the player
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * playerSpeed);
+
         //player can leave the screen horizontally
-   
         if(transform.position.x > horizontalScreenLimit || transform.position.x < -horizontalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
-        //player can leave the screen vertically
-        if(transform.position.y > verticalScreenLimit || transform.position.y < -verticalScreenLimit)
+
+        //finds the halfway point of the screen
+        float halfY = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2f, 0)).y;
+        //finds the bottom point of the screen
+        float bottomY = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+
+        //player can't move past the halfway point
+        Vector3 pos = transform.position;
+     
+        if(pos.y > halfY)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
+            pos.y = halfY;
         }
+
+        transform.position = pos;
     }
     
     void Shooting()

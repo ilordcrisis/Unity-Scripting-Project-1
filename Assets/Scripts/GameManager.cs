@@ -9,38 +9,19 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemyOnePrefab;
 
-    public GameObject cloudPrefab;
-
     public TextMeshProUGUI livesText;
 
     public int score;
 
-    public float horizontalScreenSize = 9.5f;
+    public float horizontalScreenSize = 6f;
 
-    public float verticalScreenSize;
+    public float verticalScreenSize = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        horizontalScreenSize = 10f;
-        verticalScreenSize = 6.5f;
         score = 0;
-        CreateSky();
         InvokeRepeating("CreateEnemyOne", 1, 2);
-    }
-
-    void CreateSky()
-    {
-        for(int i =0; i< 30; i++)
-        {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 1), Quaternion.identity);
-        }
-    }   
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     void CreateEnemyOne()
