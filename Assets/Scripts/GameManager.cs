@@ -32,17 +32,20 @@ public class GameManager : MonoBehaviour
 
     void CreateEnemyOne()
     {
+        Debug.Log("I am enemy one");
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
     }
 
     void CreateEnemyTwo()
     {
+        Debug.Log("I am enemy two");
         Instantiate(enemyTwoPrefab, new Vector3(Random.Range(-7f, 7f), 6.5f, 0), Quaternion.identity);
     }
 
     void CreateEnemyThree()
     {
-        Instantiate(enemyThreePrefab, new Vector3(Random.Range(-5f, 5f), 6.5f, 0), Quaternion.identity);
+        Debug.Log("I am enemy three");
+        Instantiate(enemyThreePrefab, new Vector3(Random.Range(-3f, 3f), 6.5f, 0), Quaternion.identity);
     }
 
     public void AddScore(int earnedScore)

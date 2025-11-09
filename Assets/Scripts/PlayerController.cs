@@ -84,12 +84,12 @@ public class PlayerController : MonoBehaviour
         {
             pos.y = halfY;
         }
-     
+        
         if(pos.y < bottomY)
         {
             pos.y = bottomY;
         }
-        //re-defines y position of player
+        
         transform.position = pos;
     }
     
