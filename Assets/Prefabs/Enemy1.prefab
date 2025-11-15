@@ -150,4 +150,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   explosionPrefab: {fileID: 8157688581515073741, guid: 37727e50245b71d45bcf486fc8278a97, type: 3}
-  speed: 8
+  speed: 12
