@@ -853,7 +853,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1956391003}
-  - component: {fileID: 1956391002}
+  - component: {fileID: 1956391004}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -861,25 +861,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1956391002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956391001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df9cc3002bbbd94abc564082c393b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  enemyOnePrefab: {fileID: 257210355215487136, guid: 3c07043107ef3294e8aff73236337e19, type: 3}
-  enemyTwoPrefab: {fileID: 5081847771611327934, guid: a5ec88ede5b50e5408bc05051f8b0edf, type: 3}
-  enemyThreePrefab: {fileID: 3432108953781623165, guid: 3d369bc5d648e584e880f5802a9aed08, type: 3}
-  livesText: {fileID: 1656741999}
-  score: 0
-  horizontalScreenSize: 9.5
-  verticalScreenSize: 0
 --- !u!4 &1956391003
 Transform:
   m_ObjectHideFlags: 0
@@ -895,6 +876,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1956391004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956391001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df9cc3002bbbd94abc564082c393b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerPrefab: {fileID: 4258630916597529362, guid: a91d32c07bd1eae43bdc08e9532aa663, type: 3}
+  enemyOnePrefab: {fileID: 257210355215487136, guid: 3c07043107ef3294e8aff73236337e19, type: 3}
+  enemyTwoPrefab: {fileID: 257210355215487136, guid: eb58b14ee126c444fb9f214e39b29a1c, type: 3}
+  enemyThreePrefab: {fileID: 257210355215487136, guid: 84023779eaea4ef4e8650b828c287f2c, type: 3}
+  cloudPrefab: {fileID: 549527713738567485, guid: 788ee6523a272ef4aa43acb048707181, type: 3}
+  gameOverText: {fileID: 0}
+  restartText: {fileID: 0}
+  powerupPrefab: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  powerupSound: {fileID: 0}
+  powerdownSound: {fileID: 0}
+  livesText: {fileID: 0}
+  scoreText: {fileID: 0}
+  powerupText: {fileID: 0}
+  horizontalScreenSize: 6
+  verticalScreenSize: 5
+  score: 0
+  cloudMove: 1
 --- !u!1001 &9049006029455991518
 PrefabInstance:
   m_ObjectHideFlags: 0
