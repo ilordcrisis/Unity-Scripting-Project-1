@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverText;
     public GameObject restartText;
     public GameObject powerupPrefab;
+    public GameObject coinPrefab;
     public GameObject audioPlayer;
 
     public AudioClip powerupSound;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyTwo", 3, 4);
         InvokeRepeating("CreateEnemyThree", 5, 6);
         StartCoroutine(SpawnPowerup());
+        StartCoroutine(SpawnCoin());
         //powerupText.text = "No powerups yet!";
     }
 
@@ -68,19 +70,22 @@ public class GameManager : MonoBehaviour
 
     void CreateEnemyTwo()
     {
-        Debug.Log("I am enemy two");
         Instantiate(enemyTwoPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.8f, verticalScreenSize, 0), Quaternion.identity);
     }
 
     void CreateEnemyThree()
     {
-        Debug.Log("I am enemy three");
         Instantiate(enemyThreePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.8f, verticalScreenSize, 0), Quaternion.identity);
     }
 
     void CreatePowerup()
     {
         Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+    }
+
+    void CreateCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
     }
 
     void CreateSky()
@@ -120,6 +125,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         CreatePowerup();
         StartCoroutine(SpawnPowerup());
+    }
+
+    IEnumerator SpawnCoin()
+    {
+        Debug.Log("A coin spawned.");
+        float spawnTime = Random.Range(3, 5); 
+        yield return new WaitForSeconds(spawnTime);
+        CreateCoin();
+        StartCoroutine(SpawnCoin());
     }
 
     public void PlaySound(int whichSound)
