@@ -21,15 +21,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        if(gameManager == null)
-        {
-            Debug.LogError("GameManager is null!");
-        }
-        else
-        {
-             Debug.Log("Enemy found GameManager successfully.");
-        }
        
         // Randomly choose one of the three movement patterns
         int randomPattern = Random.Range(0, 3);

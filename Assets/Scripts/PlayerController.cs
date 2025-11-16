@@ -104,6 +104,12 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+        
+        if(whatDidIHit.tag == "Coin")
+        {
+            Destroy(whatDidIHit.gameObject);
+            gameManager.AddScore(1);
+        }
     }
 
     void Shooting()
