@@ -1,2 +1,27 @@
 fileFormatVersion: 2
 guid: 3df9cc3002bbbd94abc564082c393b0c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerPrefab: {instanceID: 0}
+  - enemyOnePrefab: {fileID: 257210355215487136, guid: 3c07043107ef3294e8aff73236337e19, type: 3}
+  - enemyTwoPrefab: {fileID: 5081847771611327934, guid: a5ec88ede5b50e5408bc05051f8b0edf, type: 3}
+  - enemyThreePrefab: {fileID: 3432108953781623165, guid: 3d369bc5d648e584e880f5802a9aed08, type: 3}
+  - cloudPrefab: {fileID: 549527713738567485, guid: 788ee6523a272ef4aa43acb048707181, type: 3}
+  - gameOverText: {instanceID: 0}
+  - restartText: {instanceID: 0}
+  - powerupPrefab: {fileID: 8743773130346242677, guid: 280ae17ec25a45a419e05cb297070b51, type: 3}
+  - coinPrefab: {fileID: 8853424660027658532, guid: b4d5f9180f0b3a74ea2c4249fcd7281c, type: 3}
+  - heartPrefab: {fileID: 8853424660027658532, guid: 796a1040f181d3d44a8b53342b731d25, type: 3}
+  - audioPlayer: {instanceID: 0}
+  - powerupSound: {instanceID: 0}
+  - powerdownSound: {instanceID: 0}
+  - livesText: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - powerupText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
