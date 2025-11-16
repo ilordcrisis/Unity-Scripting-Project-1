@@ -110,6 +110,15 @@ public class PlayerController : MonoBehaviour
             Destroy(whatDidIHit.gameObject);
             gameManager.AddScore(1);
         }
+
+        if(whatDidIHit.tag == "Heal")
+        {
+            Debug.Log("I need healing");
+            Destroy(whatDidIHit.gameObject);
+            lives = Mathf.Clamp(lives + 1, 0, 3);
+            gameManager.ChangeLivesText(lives);
+        }
+
     }
 
     void Shooting()

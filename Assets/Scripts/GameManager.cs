@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject restartText;
     public GameObject powerupPrefab;
     public GameObject coinPrefab;
+    public GameObject heartPrefab;
     public GameObject audioPlayer;
 
     public AudioClip powerupSound;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyThree", 5, 6);
         StartCoroutine(SpawnPowerup());
         StartCoroutine(SpawnCoin());
+        StartCoroutine(SpawnHeart());
         //powerupText.text = "No powerups yet!";
     }
 
@@ -86,6 +88,11 @@ public class GameManager : MonoBehaviour
     void CreateCoin()
     {
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+    }
+
+    void CreateHeart()
+    {
+        Instantiate(heartPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
     }
 
     void CreateSky()
@@ -134,6 +141,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         CreateCoin();
         StartCoroutine(SpawnCoin());
+    }
+
+    IEnumerator SpawnHeart()
+    {
+        Debug.Log("A heart spawned.");
+        float spawnTime = Random.Range(3, 5); 
+        yield return new WaitForSeconds(spawnTime);
+        CreateHeart();
+        StartCoroutine(SpawnHeart());
     }
 
     public void PlaySound(int whichSound)
