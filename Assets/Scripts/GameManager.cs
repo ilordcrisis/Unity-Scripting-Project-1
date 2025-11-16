@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyTwo", 3, 4);
         InvokeRepeating("CreateEnemyThree", 5, 6);
         StartCoroutine(SpawnPowerup());
-        powerupText.text = "No powerups yet!";
+        //powerupText.text = "No powerups yet!";
     }
 
     // Update is called once per frame
@@ -138,7 +138,16 @@ public class GameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score = score + earnedScore;
-       scoreText.text = "Score: " + score;
+        if(scoreText == null)
+        {
+            Debug.LogError("scoreText is null!");
+        }
+        else
+        {
+            scoreText.text = "Score: " + score;
+        }
+
+        Debug.Log("Score: " + score);
     }
 
     public void ChangeLivesText (int currentLives)
