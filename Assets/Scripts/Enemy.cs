@@ -22,6 +22,15 @@ public class Enemy : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        if(gameManager == null)
+        {
+            Debug.LogError("GameManager is null!");
+        }
+        else
+        {
+             Debug.Log("Enemy found GameManager successfully.");
+        }
+       
         // Randomly choose one of the three movement patterns
         int randomPattern = Random.Range(0, 3);
         movementType = (MovementType)randomPattern;
@@ -76,6 +85,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
+        Debug.Log("Enemy collided with: " + whatDidIHit.name + " | tag: " + whatDidIHit.tag);
+
         if(whatDidIHit.gameObject.tag == "Player")
         {
             whatDidIHit.GetComponent<PlayerController>().LoseALife();
@@ -84,8 +95,10 @@ public class Enemy : MonoBehaviour
         }
         else if(whatDidIHit.gameObject.tag == "Weapons")
         {
+            Debug.Log("Bullet hit enemy, adding score!");
             Destroy(whatDidIHit.gameObject);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            gameManager.AddScore(1);  
             Destroy(this.gameObject);
         }
 

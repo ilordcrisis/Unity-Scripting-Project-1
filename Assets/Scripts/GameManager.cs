@@ -138,7 +138,16 @@ public class GameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score = score + earnedScore;
-       //scoreText.text = "Score: " + score;
+        if(scoreText == null)
+        {
+            Debug.LogError("scoreText is null!");
+        }
+        else
+        {
+            scoreText.text = "Score: " + score;
+        }
+
+        Debug.Log("Score: " + score);
     }
 
     public void ChangeLivesText (int currentLives)
