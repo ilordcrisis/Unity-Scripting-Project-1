@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
 
     public AudioClip powerupSound;
     public AudioClip powerdownSound;
+    public AudioClip coinSound;
+    public AudioClip healSound;
+    public AudioClip hitSound;
+    public AudioClip explodeSound;
+    public AudioClip dieSound;
+    public AudioClip shootSound;
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -161,6 +167,24 @@ public class GameManager : MonoBehaviour
                 break;
             case 2:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerdownSound);
+                break;
+            case 3:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(coinSound);
+                break;
+            case 4:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(healSound);
+                break;
+            case 5:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(hitSound);
+                break;
+            case 6:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(explodeSound);
+                break;
+            case 7:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(dieSound);
+                break;
+            case 8:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(shootSound);
                 break;
         }
     }

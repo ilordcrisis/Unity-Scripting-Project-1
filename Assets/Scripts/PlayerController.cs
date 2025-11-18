@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         if (lives == 0)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            gameManager.PlaySound(7);
             gameManager.GameOver();
             Destroy(this.gameObject);
         }
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
         
         if(whatDidIHit.tag == "Coin")
         {
+            gameManager.PlaySound(3);
             Destroy(whatDidIHit.gameObject);
             gameManager.AddScore(1);
         }
@@ -114,6 +116,7 @@ public class PlayerController : MonoBehaviour
         if(whatDidIHit.tag == "Heal")
         {
             Debug.Log("I need healing");
+            gameManager.PlaySound(4);
             Destroy(whatDidIHit.gameObject);
             lives = Mathf.Clamp(lives + 1, 0, 3);
             gameManager.ChangeLivesText(lives);
@@ -128,13 +131,16 @@ public class PlayerController : MonoBehaviour
             switch(weaponType)
             {
                 case 1:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                     break;
                 case 2:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.identity);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
                     break;
                 case 3:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.Euler(0, 0, 45));
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.Euler(0, 0, -45));
