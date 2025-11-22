@@ -95,6 +95,11 @@ public class Enemy : MonoBehaviour
             gameManager.AddScore(5);  
             Destroy(this.gameObject);
         }
-
+        else if (whatDidIHit.CompareTag("Shield")) // NEW: Added shield collision logic to the Enemy
+        {
+            // Enemy dies when touching shield
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
