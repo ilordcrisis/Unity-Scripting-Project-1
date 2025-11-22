@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShieldTimer() // NEW: Added the timed coroutine. Turn shield off after X seconds
     {
         yield return new WaitForSeconds(10f);
-
+        gameManager.PlaySound(2);
         shieldPrefab.SetActive(false);
         shieldRoutine = null;  // reset so we can restart next time
     }
