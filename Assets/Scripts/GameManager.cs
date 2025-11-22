@@ -88,19 +88,24 @@ public class GameManager : MonoBehaviour
 
     void CreatePowerup()
     {
-        Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(powerupPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
 
     void CreateCoin()
     {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(coinPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
 
     void CreateHeart()
     {
-        Instantiate(heartPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(heartPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
-
     void CreateSky()
     {
         for (int i = 0; i < 30; i++)
