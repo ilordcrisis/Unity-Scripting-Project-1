@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
 
     public AudioClip powerupSound;
     public AudioClip powerdownSound;
+    public AudioClip coinSound;
+    public AudioClip healSound;
+    public AudioClip hitSound;
+    public AudioClip explodeSound;
+    public AudioClip dieSound;
+    public AudioClip shootSound;
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -82,19 +88,24 @@ public class GameManager : MonoBehaviour
 
     void CreatePowerup()
     {
-        Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(powerupPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
 
     void CreateCoin()
     {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(coinPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
 
     void CreateHeart()
     {
-        Instantiate(heartPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+        float x = Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f);
+        float y = Random.Range(-verticalScreenSize * 0.8f, 0);   //  bottom half only
+        Instantiate(heartPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
-
     void CreateSky()
     {
         for (int i = 0; i < 30; i++)
@@ -161,6 +172,24 @@ public class GameManager : MonoBehaviour
                 break;
             case 2:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerdownSound);
+                break;
+            case 3:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(coinSound);
+                break;
+            case 4:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(healSound);
+                break;
+            case 5:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(hitSound);
+                break;
+            case 6:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(explodeSound);
+                break;
+            case 7:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(dieSound);
+                break;
+            case 8:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(shootSound);
                 break;
         }
     }

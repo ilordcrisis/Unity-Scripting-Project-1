@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour
         if(whatDidIHit.gameObject.tag == "Player")
         {
             whatDidIHit.GetComponent<PlayerController>().LoseALife();
+            gameManager.PlaySound(5);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
@@ -88,10 +89,17 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Bullet hit enemy, adding score!");
             Destroy(whatDidIHit.gameObject);
+            gameManager.PlaySound(5);
+            gameManager.PlaySound(6);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            gameManager.AddScore(1);  
+            gameManager.AddScore(5);  
             Destroy(this.gameObject);
         }
-
+        else if (whatDidIHit.CompareTag("Shield")) // NEW: Added shield collision logic to the Enemy
+        {
+            // Enemy dies when touching shield
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

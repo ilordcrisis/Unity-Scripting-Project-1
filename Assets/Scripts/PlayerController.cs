@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public int lives;
     private float speed;
     private int weaponType;
+    public float shieldDuration = 5f; // NEW: How long the shield lasts
+    
 
     private GameManager gameManager;
 
@@ -17,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
     public GameObject thrusterPrefab;
-    public GameObject shieldPrefab;
+    public GameObject shieldPrefab;   // NEW: Assign in Inspector (your Shield object)
+    private Coroutine shieldRoutine;  // NEW: Used to restart timer
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if (lives == 0)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            gameManager.PlaySound(7);
             gameManager.GameOver();
             Destroy(this.gameObject);
         }
@@ -67,6 +71,13 @@ public class PlayerController : MonoBehaviour
         weaponType = 1;
         gameManager.ManagePowerupText(0);
         gameManager.PlaySound(2);
+    }
+    private IEnumerator ShieldTimer() // NEW: Added the timed coroutine. Turn shield off after X seconds
+    {
+        yield return new WaitForSeconds(10f);
+
+        shieldPrefab.SetActive(false);
+        shieldRoutine = null;  // reset so we can restart next time
     }
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
@@ -94,19 +105,17 @@ public class PlayerController : MonoBehaviour
                     weaponType = 3; //Picked up triple weapon
                     StartCoroutine(WeaponPowerDown());
                     gameManager.ManagePowerupText(3);
-                    break;
-                case 4:
-                    //Picked up shield
-                    //Do I already have a shield?
-                    //If yes: do nothing
-                    //If not: activate the shield's visibility
+                    break; 
+                case 4: // NEW: Shield powerup
+                    ActivateShield();
                     gameManager.ManagePowerupText(4);
                     break;
             }
-        }
+        } 
         
         if(whatDidIHit.tag == "Coin")
         {
+            gameManager.PlaySound(3);
             Destroy(whatDidIHit.gameObject);
             gameManager.AddScore(1);
         }
@@ -114,11 +123,24 @@ public class PlayerController : MonoBehaviour
         if(whatDidIHit.tag == "Heal")
         {
             Debug.Log("I need healing");
+            gameManager.PlaySound(4);
             Destroy(whatDidIHit.gameObject);
             lives = Mathf.Clamp(lives + 1, 0, 3);
             gameManager.ChangeLivesText(lives);
         }
 
+    }
+
+    public void ActivateShield() // NEW: Added the ActivateShield() function
+    {
+        // If shield already active, restart its timer
+        if (shieldRoutine != null)
+            StopCoroutine(shieldRoutine);
+
+        shieldPrefab.SetActive(true);
+
+        // Start shield timer
+        shieldRoutine = StartCoroutine(ShieldTimer());
     }
 
     void Shooting()
@@ -128,13 +150,16 @@ public class PlayerController : MonoBehaviour
             switch(weaponType)
             {
                 case 1:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                     break;
                 case 2:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.identity);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
                     break;
                 case 3:
+                    gameManager.PlaySound(8);
                     Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.Euler(0, 0, 45));
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
                     Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.Euler(0, 0, -45));
